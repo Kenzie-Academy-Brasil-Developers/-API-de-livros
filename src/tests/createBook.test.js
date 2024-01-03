@@ -4,12 +4,12 @@ import { bookDefaultExpects } from "./utils/bookDefaultExpects";
 import { errorDefaultExpects } from "./utils/errorDefaultExpects";
 import { request } from "./setupFiles";
 
-describe("create book", () => {
+describe("postBooks book", () => {
   beforeAll(() => {
     booksDatabase.length = 0;
   });
 
-  it("should be able to create a book sucessfully", async () => {
+  it("should be able to postBooks a book sucessfully", async () => {
     const data = await request
       .post("/books")
       .send({
@@ -26,7 +26,7 @@ describe("create book", () => {
     expect(data.id).toEqual(1);
   });
 
-  it("should be able to create a book without a category", async () => {
+  it("should be able to postBooks a book without a category", async () => {
     const data = await request
       .post("/books")
       .send({
@@ -41,7 +41,7 @@ describe("create book", () => {
     expect(data.id).toEqual(2);
   });
 
-  it("should not be able to create a book with the same name", async () => {
+  it("should not be able to postBooks a book with the same name", async () => {
     const data = await request
       .post("/books")
       .send({

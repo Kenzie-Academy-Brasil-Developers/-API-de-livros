@@ -6,8 +6,8 @@ export const firstBookMock = () => {
       name: "Harry Potter",
       pages: 325,
       category: "fantasia",
-      createdAt: date,
-      updatedAt: date,
+      postBooksdAt: date,
+      updateBookdAt: date,
    };
 };
 
@@ -19,7 +19,7 @@ export const secondBookMock = () => {
       name: "Jogos Vorazes",
       pages: 325,
       category: "fantasia",
-      createdAt: date,
-      updatedAt: date,
+      postBooksdAt: date,
+      updateBookdAt: date,
    };
 };

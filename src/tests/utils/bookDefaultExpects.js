@@ -15,9 +15,9 @@ export const bookDefaultExpects = (book) => {
    expect(book.pages).toBeDefined();
    expect(book.pages).toBeTypeOf("number");
 
-   expect(book.createdAt).toBeDefined();
-   expect(String(book.createdAt)).toContain(year);
+   expect(book.postBooksdAt).toBeDefined();
+   expect(String(book.postBooksdAt)).toContain(year);
 
-   expect(book.updatedAt).toBeDefined();
-   expect(String(book.createdAt)).toContain(year);
+   expect(book.updateBookdAt).toBeDefined();
+   expect(String(book.postBooksdAt)).toContain(year);
 };
