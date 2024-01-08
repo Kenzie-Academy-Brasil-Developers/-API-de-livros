@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { booksDatabase } from "../database/database";
 import { AppError } from "../errors/appError";
-import { IBook } from "../interface/interface";
+import { Book } from "../interface/interface";
 
 export class isBookValid {
     verifyBookId = (req: Request, res: Response, next: NextFunction): void => {
@@ -20,7 +20,7 @@ export class isBookValid {
         req: Request, res: Response, next: NextFunction
     ): void => {
         const { name } = req.body;
-        const existingBookWithSameName: IBook | undefined = booksDatabase.find(
+        const existingBookWithSameName: Book | undefined = booksDatabase.find(
             (book) => book.name === name
         );
 

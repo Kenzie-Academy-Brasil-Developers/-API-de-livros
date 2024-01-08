@@ -1,35 +1,42 @@
 import { booksDatabase } from "../database/database";
-import { postBooksBook, IBook, updateBook } from "../interface/interface";
+import { postBooksBook, Book, updateBook } from "../interface/interface";
 
 
 export class BookServices {
     private id = 1;
 
-    postBooks = (body: postBooksBook): IBook => {
-        const newBook: IBook = {
+    postBooks = (body: postBooksBook): Book => {
+        const newBook: Book = {
             id: this.id++,
             ...body,
-            postBooksdAt: new Date(),
-            updateBookdAt: new Date(),
+            createdAt: new Date(),
+            updatedAt: new Date(),
         };
         booksDatabase.push(newBook);
         return newBook;
     }
-    getBooks = (): IBook[] => {
-        return booksDatabase;
+    getBooks = (query?: string): Book[] => {
+        if (query) {
+
+            return booksDatabase.filter((book) => book.name.toLocaleLowerCase().includes(query));
+        }
+        return booksDatabase
     }
-    getOne = (id: number): IBook | undefined => {
+    retrieveBook = (id: number): Book | undefined => {
         return booksDatabase[id]
     }
-    deleteBook = (id: number): void => {
-        booksDatabase.splice(id, 1)
-    }
-    updateBook = (index: number, body: updateBook): IBook => {
+    updateBook = (index: number, body: updateBook): Book | undefined => {
         booksDatabase[index] = {
             ...booksDatabase[index],
             ...body,
+            updatedAt: new Date(),
+
         }
         return booksDatabase[index]
+    }
+
+    deleteBook = (id: number): void => {
+        booksDatabase.splice(id, 1)
     }
 
 }
